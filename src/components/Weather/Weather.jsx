@@ -12,7 +12,7 @@ export function Weather() {
 	const [icon, setIcon] = useState('');
 
 	useEffect(() => {
-		
+
 		async function getData() {
 			// Getting  location details
 			const coor = await getLocation();
@@ -28,7 +28,13 @@ export function Weather() {
 			setTemp(data.main.temp.toFixed(0));
 			setWeather(data.weather[0].description.toUpperCase());
 		}
+
 		getData();
+		const interval = setInterval(() => {
+			getData();
+		}, 300000);
+
+		return () => clearInterval(interval);
 	}, []);
 
 	function handleUnitChange() {
