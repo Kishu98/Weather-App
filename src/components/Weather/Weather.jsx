@@ -23,7 +23,7 @@ export function Weather() {
 
 			let loc = `${coor.name}, ${coor.country}`;
 			setLocation(loc);
-			let iconLink = `https://openweathermap.org/img/wn/02n@2x.png`
+			let iconLink = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
 			setIcon(iconLink);
 			setTemp(data.main.temp.toFixed(0));
 			setWeather(data.weather[0].description.toUpperCase());
@@ -46,12 +46,11 @@ export function Weather() {
 
 	return (
 		<div className="currentWeather">
-			<link rel="icon" href={icon} type="image/icon type"></link>
-			<i>{icon}</i>
-			<p><b>{weather}</b></p>
-			<p>{location}</p>
-			<p>{temp}° {isCelsius ? "C" : "F" }</p>
-			<button onClick={handleUnitChange}>Change unit</button>
+			<img className="weatherIcon" src={icon}></img>
+			<p className="weather">{weather}</p>
+			<p className="location">{location.toUpperCase()}</p>
+			<p className="temp">{temp}° {isCelsius ? "C" : "F" }</p>
+			{/* <button className="unit" onClick={handleUnitChange}>Change unit</button> */}
 		</div>
 	)
 }
