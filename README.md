@@ -1,8 +1,44 @@
-# React + Vite
+# A Simple Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimilistic weather app created as a side project to get better understanding of react. The app shows the current weather, along with the weather forecast which shows the temperature for the next 5 days.
 
-Currently, two official plugins are available:
+## Environment Variables
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run this project, you will need to add the following environment variables to your .env file. Make sure that the variable starts with `VITE_`.
+
+`VITE_API_KEY`
+`VITE_CITY`
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Kishu98/Weather-App.git
+```
+
+Go to the project directory
+
+```bash
+  cd weather-app
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
