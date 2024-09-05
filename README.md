@@ -37,7 +37,7 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Pasted image 20240905204449](https://github.com/user-attachments/assets/3ece5f73-4e26-46f3-a098-540bb89ce7f3)
 
 ## License
 
