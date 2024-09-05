@@ -1,0 +1,22 @@
+.container {
+    margin-top: 10%;
+    font-size: x-small;
+}
+
+.forecast-list {
+    border-color:aqua ;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    list-style-type: none;
+    padding: 0;
+}
+
+.icon {  
+    width: 100%;
+    height: auto;
+}
+
+.day, .temperature {
+    font-size: small;
+    font-weight:bolder;
+}
