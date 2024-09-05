@@ -2,51 +2,43 @@ import { useEffect, useState } from "react";
 import { getLocation } from "../Weather/getLocation";
 
 export function Forecast() {
-	const API_KEY = import.meta.env.VITE_API_KEY;
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
-	const [iconLinks, setIconLinks] = useState([]);
-	let icons = [];
+  const [iconLinks, setIconLinks] = useState([]);
+  const [temps, setTemps] = useState([]);
+  const [forecast, setForecast] = useState([]);
 
-	useEffect(() => {
-		async function getForecast() {
-			const coor = await getLocation();
-			const res = await fetch(
-				`https://api.openweathermap.org/data/2.5/forecast?lat=${coor.lat}&lon=${coor.lon}&units=metric&appid=${API_KEY}`
-			);
-			if (res.ok) {
-				let forecast = await res.json();
-				let list = forecast.list;
-				// getting next 5 days in list
-				let newList = list.filter((listItem) =>
-					listItem.dt_txt.includes("15:00:00")
-				);
-				// console.log(newList);
+  useEffect(() => {
+    async function getForecast() {
+      const coor = await getLocation();
+      const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${coor.lat}&lon=${coor.lon}&units=metric&appid=${API_KEY}`
+      );
+      if (res.ok) {
+        let forecast = await res.json();
+        // console.log(forecast);
+        let list = forecast.list;
+        // getting next 5 days in list
+        list = list.filter((listItem) => listItem.dt_txt.includes("15:00:00"));
+        console.log(list);
+        setForecast(list);
+      } else {
+        alert("Error: " + res.status);
+      }
+    }
+    getForecast();
+  }, []);
 
-				// Getting the icons
-				icons = newList.map((icon) => icon.weather[0]);
-				// console.log(icons);
-				icons = icons.map(
-					(icon) =>
-						`https://openweathermap.org/img/wn/${icon.icon}@2x.png`
-				);
-				setIconLinks(icons);
-			} else {
-				alert("Error: " + res.status);
-			}
-		}
-		getForecast();
-	}, []);
-
-	return (
-		<>
-			<ul>
-				{iconLinks.map((link) => (
-					<li>
-						<p></p>
-						<img src={link}></img>
-					</li>
-				))}
-			</ul>
-		</>
-	);
+  return (
+    <>
+      <ul>
+        {forecast.map((forecast) => (
+          <li>
+            <img src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}></img>
+            <p>{forecast.main.temp}</p>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }
